@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>글쓰기</title>
+<link rel="stylesheet" href="./../../assets/css/mysite.css">
+<link rel="stylesheet" href="./../../assets/css/board.css">
+</head>
+<body>
+<div id="wrap">
+	<div id="header" class="clearfix">
+		<h1><a class="" href="./../main/index.html">MySite</a></h1>
+
+		<ul class="clearfix">
+			<li class="clearfix"><a href="">로그인</a></li>
+			<li class="clearfix"><a href="./../member/signUp.html">회원가입</a></li>
+		</ul>
+	</div>
+	<!--  header -->
+
+	<div id="nav">
+		<ul class="clearfix">
+			<li><a class="" href="./../apply/resume.html">입사지원서</a></li>
+			<li><a class="" href="./list.html">게시판</a></li>
+			<li><a class="" href="">갤러리</a></li>
+			<li><a class="" href="">방명록</a></li>
+		</ul>
+	</div>
+	<!--  nav -->
+
+	<div id="contents" class="clearfix">
+		 <div id="aside">
+		 	<h2>게시판</h2>
+
+		 	<ul>
+		 		<li><a href="./list.html">일반 게시판</a></li>
+		 		<li><a class="" href="">댓글 게시판</a></li>
+		 		<li><a class="" href="">첨부 게시판</a></li>
+		 	</ul>
+		 </div>
+		 <!--  aside -->
+
+		 <div id="main-contents">
+		 	<div id="main-contents-header" class="clearfix">
+			 	<h3>일반게시판</h3>
+
+ 			 	<ol>
+			 		<li><a class="" href="./../main/index.html">홈</a></li>
+			 		<li><a href="./list.html">게시판</a></li>
+			 		<li><a href="./writeForm.html">글쓰기</a></li>
+			 	</ol>
+		 	</div>
+
+		 	<form>
+		 	<div id="main-contents-body">
+		 		<!--  게시판 선택  -->
+		 		<div class="form-group">
+			 		<label class="form-title" for="sel-board">게시판선택</label>
+			 		<select id="sel-board">
+			 			<option>선택해주세요</option>
+			 			<option>공지사항</option>
+			 			<option>일반게시판</option>
+			 			<option>익명게시판</option>
+			 		</select>
+		 		</div>
+
+		 		<!--  제목 입력  -->
+		 		<div class="form-group">
+			 		<label class="form-title" for="txt-title">제목</label>
+			 		<input id="txt-title" type="text">
+		 		</div>
+
+		 		<!--  비밀번호  -->
+		 		<div class="form-group">
+			 		<label class="form-title" for="txt-password">비밀번호</label>
+			 		<input id="txt-password" type="password">
+		 		</div>
+
+		 		<!--  공개 범위 -->
+		 		<div class="form-group">
+					<span class="form-title">공개범위</span>
+					<label for="p01">본인</label>
+					<input id="p01" type="radio" name="permit">
+					<label for="p02">로그인회원</label>
+					<input id="p02" type="radio" name="permit">
+					<label for="p03">친구</label>
+					<input id="p03" type="radio" name="permit">
+					<label for="p04">전체</label>
+					<input id="p04" type="radio" name="permit">
+		 		</div>
+
+		 		<!-- 허용범위 -->
+		 		<div class="form-group">
+					<span class="form-title">허용범위</span>
+					<label for="c01">댓글허용</label>
+					<input id="c01" type="checkbox">
+					<label for="c02">답글허용</label>
+					<input id="c02" type="checkbox">
+					<label for="c03">좋아요허용</label>
+					<input id="c03" type="checkbox">
+				</div>
+
+		 		<!--  글내용  -->
+		 		<div class="form-group">
+			 		<textarea id="txt-contents"></textarea>
+		 		</div>
+
+		 		<!--  첨부파일  -->
+		 		<div class="form-group">
+			 		<label class="form-title" for="attach-file">첨부파일</label>
+			 		<input id="attach-file" type="file">
+		 		</div>
+			</div>
+			<!-- main contents body -->
+
+			<div id="main-contents-footer">
+				<button class="btn">등록</button>
+				<button class="btn">초기화</button>
+			</div>
+			<!--  main contents footer -->
+			</form>
+		 </div>
+		 <!--  main -->
+	</div>
+	<!--  contents -->
+
+
+	<div id="footer">
+		<div>Copyright ⓒ 2020 정우성, All right reserved</div>
+	</div>
+	<!--  footer -->
+</div>
+<!--  wrap -->
+</body>
+</html>

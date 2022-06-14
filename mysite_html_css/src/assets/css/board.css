@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+/* 게시판 공통 ---------------------------------------------------------------*/
+#main-contents-body {
+	padding: 30px 0px 20px 0px;
+	border-bottom: 1px solid #bfbfbf;
+}
+
+#main-contents-footer {
+	margin: 20px 0 20px 0;
+	text-align: center;
+}
+
+select {
+	padding: 4px 3px 2px 3px;
+}
+
+input[type="password"], input[type="text"] {
+	height: 14px;
+	padding: 3px 6px 3px 6px;
+}
+
+input[type="radio"] {
+	width: 12px;
+	height: 12px;
+	margin: 0 10px 0 0;
+}
+
+input[type="checkbox"] {
+	width: 12px;
+	height: 12px;
+	margin: 0 10px 0 0;
+}
+
+input[type="file"] {
+	cursor: pointer;
+}
+
+.btn {
+	padding: 5px 0 5px 0;
+	width: 80px;
+	cursor: pointer;
+}
+
+/* ---<글쓰기 폼>------------------------------------------------------*/
+
+#main-contents-body .form-title {
+	display: inline-block;
+	width: 80px;
+	font-size: 14px;
+}
+
+#main-contents-body .form-group {
+	margin: 0 0 10px 0;
+}
+
+#txt-title {
+	width: 700px;
+}
+
+
+#sel-board {
+	width: 150px;
+}
+
+#txt-password {
+	width: 133px;
+}
+
+#txt-contents {
+	width: 786px;
+	height: 200px;
+	margin: 0 0 10px 0;
+	padding: 3px 6px 3px 6px;
+	font-family: "맑은 고딕", 돋움, 굴림;
+	font-size: 12px;
+	resize: none;
+}
+
+#attach-file {
+	margin: 0 0 20px 0;
+}
+
+
+/* ----글목록--글검색------------------------------------------------------*/
+#main-contents > #main-contents-body-board {
+	margin: 10px 0 0 0;
+}
+
+#main-contents-body-board > #search {
+	float: right;
+}
+
+#search > input[type='text'] {
+	float: left;
+	padding: 3px 5px 3px 5px;
+	margin: 0 5px 0 0;
+	width: 180px;
+	font-family: "맑은 고딕", 돋움, 굴림;
+	font-size: 12px;
+}
+
+#search > button {
+	height: 24px;
+	float: left;
+	padding: 0 5px 3px 5px;
+	line-height: 24px;
+	font-size: 12px;
+}
+
+/* 글목록 ----------------------------------------------------------------*/
+
+#main-contents-body-board > #list {
+	padding: 50px 0 0 0;
+}
+
+#list table{
+	width: 820px;
+	border-top: 1px solid #686868;
+	border-bottom: 1px solid #686868;
+	border-collapse: collapse;
+}
+
+#list thead th{
+	padding: 5px 0 5px 0;
+	font-size: 15px;
+	text-align: center;
+	background-color: #dfdfdf;
+}
+
+#list tbody td{
+	padding: 5px 0 5px 0;
+	font-size: 14px;
+	text-align: center;
+	border-top: 1px dotted #bfbfbf;
+}
+
+/* 글 목록 밑에(페이지이동 + 글쓰기) ----------------------------------------*/
+#main-contents-footer > ol{
+	float: left;
+	padding: 20px 0 0 240px;
+}
+
+#main-contents-footer ol>li{
+	float: left;
+	margin: 0 5px 0 5px;
+	font-size: 15px;
+}
+
+#main-contents-footer button{
+	float: right;
+	margin: 0 0 0 10px;
+	padding: 5px 8px 5px 8px;
+	font-size: 12px;
+}
+
+#main-contents-footer #btn-writing{
+	margin: 15px 0 0 0;
+	padding: 3px 10px 3px 10px;
+}

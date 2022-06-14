@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+/* ---메인본문--------------------------------------- */
+
+#img-profile{
+	float: left;
+	margin: 0 20px 0 0;
+	width: 300px;
+}
+
+#greetings{
+	float: left;
+	font-size: 18px;
+}
+

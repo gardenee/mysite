@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+
+/*-----레이아웃-----------------------------------*/
+#main-contents-body {
+	padding: 10px 0 10px 0;
+	font-size: 13px;
+	font-family: "맑은 고딕", 돋움, 굴림;
+}
+
+#main-contents-footer {
+	margin: 0 0 20px 0;
+	text-align: center;
+}
+
+/*----input type별 기본 설정-------------------------------------------------*/
+
+input[type="password"], input[type="text"] {
+	height: 14px;
+	padding: 3px 6px 3px 6px;
+}
+
+select {
+	padding: 4px 3px 2px 3px;
+}
+
+input[type="radio"] {
+	width: 12px;
+	height: 12px;
+	margin: 0 10px 0 0;
+}
+
+input[type="checkbox"] {
+	width: 12px;
+	height: 12px;
+	margin: 0 10px 0 0;
+}
+
+input[type="file"] {
+	cursor: pointer;
+}
+
+/*-----회원가입 양식----------------------------------------*/
+
+#main-contents-body .form-group {
+	padding: 10px 0 10px 0;
+	border-bottom: 1px solid #dddddd;
+}
+
+#main-contents-body .form-title {
+	display: inline-block;
+	width: 100px;
+	vertical-align: top;
+}
+
+#main-contents-body #btn-postnum {
+	margin: 0 0 0 2px;
+	height: 23px;
+}
+
+#main-contents-body #txt-address {
+	width: 680px;
+}
+
+#main-contents-body #txt-address2 {
+	margin: 10px 0 0 0;
+}
+
+#main-contents-body textarea {
+	width: 680px;
+	height: 120px;
+	padding: 5px;
+	resize: none;
+}
+
+/*-------main-contents-footer 버튼----------------------------*/
+
+#main-contents-footer button {
+	padding: 5px 0 5px 0;
+	margin: 0 2px 0 2px;
+	width: 60px;
+}

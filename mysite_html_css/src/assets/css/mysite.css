@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+/* ----------- reset --------------------------------------------------- */
+
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, input,
+fieldset, legend, p, select, table, th, td, tr, textarea,
+button, form {margin: 0; padding: 0;}
+
+body {
+	font-size: 12px;
+	font-family: "맑은 고딕", 돋움, 굴림;
+}
+
+ul, ol {list-style-type: none;}
+
+a:link    {color: #000000; text-decoration: none;}
+a:visited {color: #000000; text-decoration: none;}
+a:hover   {color: #000000; text-decoration: none;}
+a:active  {color: #000000; text-decoration: none;}
+
+.clearfix{*zoom:1;}
+.clearfix:before, .clearfix:after {
+	display: block; content: "";
+	line-height: 0;
+}
+.clearfix:after {clear: both;}
+
+.bold{font-weight: bold;}
+
+
+/* ----------- 레이아웃 --------------------------------------------------- */
+
+#wrap {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#wrap > #header {
+	padding: 10px 0px 10px 0px;
+	border-bottom: 1px solid #bfbfbf;
+}
+
+#wrap > #nav {
+	padding: 10px 0 10px 0;
+	border-bottom: 1px solid #bfbfbf;
+}
+
+/* 가로 전체 사용 */
+#wrap > #full-contents {
+	padding: 40px 20px 40px 20px;
+}
+
+/* 가로 서브 메뉴 있을 때 */
+#wrap > #contents {
+	padding: 30px 0px 30px 0px;
+}
+
+#wrap > #footer {
+	background-color: #dddddd;
+	padding: 20px 0 20px 0;
+}
+
+
+/* ------<header: 로고/로그인/회원가입>-------------------------------------- */
+
+#header > h1 {
+	float: left;
+	font-weight: bold;
+	font-size: 35px;
+	color: #79b308;
+}
+
+#header > h1 > a:visited {
+	color: #79b308;
+}
+
+#header ul {
+	float: right;
+	margin: 15px 0 0 0;
+}
+
+#header ul>li {
+	float: left;
+	margin: 0px 0px 0px 20px;
+	font-size: 14px;
+}
+
+
+/* ---------<nav: 메인메뉸>------------------------------------------- */
+
+#nav ul>li{
+	float: left;
+	width: 250px;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+}
+
+
+/* -------contents>aside(서브메뉴)---------------------------------------- */
+
+#contents > #aside{
+	margin: 0 25px 0 0;
+	float: left;
+	width: 155px;
+}
+
+#contents > #aside > h2 {
+	background-color: #dddddd;
+	font-size: 20px;
+	text-align: center;
+	height: 60px;
+	line-height: 60px;
+}
+
+#contents > #aside > ul > li {
+	padding: 8px 0 8px 10px;
+	margin: 5px 0 0 0;
+	font-size: 14px;
+	border: 1px solid #bfbfbf;
+}
+
+
+/* ----main-contents-header(게시판이름+네비)----------------------------------
+*/
+#contents > #main-contents {
+	float: left;
+	width: 820px;
+}
+
+#main-contents> #main-contents-header {
+	padding: 18px 0 5px 0;
+	border-bottom: 1px solid #bfbfbf;
+}
+
+#main-contents-header > h3 {
+	float: left;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#main-contents-header > ol {
+	float: right;
+}
+
+#main-contents-header > ol > li {
+	float: left;
+}
+
+#main-contents-header > ol > li:after {
+	content: ">";
+	padding: 0 5px 0 5px;
+}
+
+#main-contents-header > ol > li+li+li:after {
+	content: '';
+}
+
+
+/* -------- footer ----------------------------------- */
+#footer div {
+	text-align: center;
+	font-size: 12px;
+}

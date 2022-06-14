@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./../../assets/css/mysite.css">
+<link rel="stylesheet" href="./../../assets/css/member.css">
+<title>회원가입</title>
+</head>
+
+<body>
+<div id="wrap">
+	<div id="header" class="clearfix">
+		<h1><a class="" href="./../main/index.html">MySite</a></h1>
+
+		<ul class="clearfix">
+			<li class="clearfix"><a href="">로그인</a></li>
+			<li class="clearfix"><a href="./../member/signUp.html">회원가입</a></li>
+		</ul>
+	</div>
+	<!--  header -->
+
+
+	<div id="nav">
+		<ul class="clearfix">
+			<li><a class="" href="./../apply/resume.html">입사지원서</a></li>
+			<li><a class="" href="./../board/list.html">게시판</a></li>
+			<li><a class="" href="">갤러리</a></li>
+			<li><a class="" href="">방명록</a></li>
+		</ul>
+	</div>
+	<!--  nav  -->
+
+
+	<div id="contents" class="clearfix">
+		 <div id="aside">
+		 	<h2>회원</h2>
+
+		 	<ul>
+		 		<li><a href="./signUp.html">회원가입</a></li>
+		 		<li><a class="" href="">로그인</a></li>
+		 		<li><a class="" href="">ID/PW찾기</a></li>
+		 	</ul>
+		 </div>
+		 <!--  aside -->
+
+
+		 <div id="main-contents">
+		 	<div id="main-contents-header" class="clearfix">
+			 	<h3>회원가입</h3>
+
+			 	<ol>
+			 		<li><a class="" href="./../main/index.html">홈</a></li>
+			 		<li><a class="" href="">회원</a></li>
+			 		<li><a href="./signUp.html">회원가입</a></li>
+			 	</ol>
+		 	</div>
+		 	<!--  main contents header -->
+
+		 	<form>
+			 	<div id="main-contents-body">
+			 		<div class="form-group">
+			 			<label class="form-title" for="txt-id">아이디</label>
+			 			<input id="txt-id" type="text" placeholder="아이디를 입력하세요">
+			 		</div>
+			 		<div class="form-group">
+			 			<label class="form-title" for="txt-password">패스워드</label>
+			 			<input id="txt-password" type="password" placeholder="패스워드를 입력하세요">
+			 		</div>
+			 		<div class="form-group">
+			 			<label class="form-title" for="txt-name">이름</label>
+			 			<input id="txt-name" type="text" placeholder="이름을 입력하세요">
+			 		</div>
+			 		<div class="form-group">
+			 			<label class="form-title" for="file-img">프로필사진</label>
+			 			<input id="file-img" type="file">
+			 		</div>
+			 		<div class="form-group">
+			 			<div id="txt-address1">
+				 			<label class="form-title" for="txt-address">주소</label>
+				 			<input type="text" placeholder="우편번호">
+				 			<button id="btn-postnum">우편번호찾기</button>
+				 		</div>
+				 		<div id="txt-address2">
+				 			<span class="form-title"></span>
+				 			<input id="txt-address" type="text" placeholder="주소">
+			 			</div>
+			 		</div>
+			 		<div class="form-group">
+			 			<label class="form-title" for="sel-telecom">이동통신사</label>
+			 			<select id="sel-telecom">
+			 				<option>선택해주세요</option>
+			 				<option>SKT</option>
+			 				<option>KT</option>
+			 				<option>LG 유플러스</option>
+			 			</select>
+			 		</div>
+			 		<div class="form-group">
+			 			<span class="form-title">나이</span>
+			 			<label for="r10">10대</label>
+			 			<input id="r10" type="radio" name="age">
+			 			<label for="r20">20대</label>
+			 			<input id="r20" type="radio" name="age">
+			 			<label for="r30">30대</label>
+			 			<input id="r30" type="radio" name="age">
+			 			<label for="r40">40대</label>
+			 			<input id="r40" type="radio" name="age">
+			 			<label for="rplus">기타</label>
+			 			<input id="rplus" type="radio" name="age">
+			 		</div>
+			 		<div class="form-group">
+			 			<span class="form-title">취미</span>
+			 			<label for="c-book">독서</label>
+			 			<input id="c-book" type="checkbox">
+			 			<label for="c-music">음악</label>
+			 			<input id="c-music" type="checkbox">
+			 			<label for="c-trip">여행</label>
+			 			<input id="c-trip" type="checkbox">
+			 			<label for="c-movie">영화</label>
+			 			<input id="c-movie" type="checkbox">
+			 			<label for="c-coding">코딩</label>
+			 			<input id="c-coding" type="checkbox">
+			 			<label for="c-etc">기타</label>
+			 			<input id="c-etc" type="checkbox">
+			 		</div>
+			 		<div class="form-group">
+			 			<label class="form-title" for="txt-introduce">자기소개</label>
+			 			<textarea></textarea>
+			 		</div>
+			 	</div>
+			 	<!--  main contents-body -->
+
+
+			 	<div id="main-contents-footer">
+			 		<button>등록</button>
+			 		<button>초기화</button>
+			 	</div>
+			 	<!--  main contents-footer -->
+		 	</form>
+		</div>
+	</div>
+	
+	<div id="footer">
+		<div>Copyright ⓒ 2020 정우성, All right reserved</div>
+	</div>
+	<!--  footer -->
+</div>
+</body>
+</html>

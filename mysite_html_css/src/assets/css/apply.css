@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/* ---이력서 표 -------------------------------------------------------------*/
+
+#main-contents-body #resume{
+	margin: 0 0 40px 50px;
+}
+
+#main-contents-body h3{
+	margin: 40px 0 30px 0;
+	font-size: 30px;
+	font-weight: bold;
+  text-align: center;
+}
+
+#resume table{
+	font-size:15px;
+	text-align: center;
+	border-collapse: collapse;
+	border: 3px solid #444444;
+}
+
+#resume th{
+	padding: 3px 0 3px 0;
+	border: 2px solid #878787;
+	background-color: #bfbfbf;
+}
+
+#resume td{
+	border: 2px solid #878787;
+	padding: 3px 3px 3px 3px;
+}
