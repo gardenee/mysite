@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+	<select id="list" resultType="BoardVo" parameterType="String">
+			SELECT board.no no
+			       ,board.title title
+			       ,board.content content
+			       ,board.hit hit
+			       ,TO_CHAR(board.reg_date, 'YY-MM-DD HH24:MI') regDate
+			       ,board.user_no userNo
+			       ,users.name name
+			FROM   users, board
+			WHERE  users.no = board.user_no
+			<if test='_parameter != null or !_parameter.equals("")'>
+			       AND title LIKE '%'||#{search}||'%'
+			</if>
+			ORDER BY no DESC
+	</select>
+	
+	
+	<select id="selectPost" resultType="BoardVo" parameterType="int">
+		<![CDATA[ 
+			SELECT board.no no
+			       ,board.title title
+			       ,board.content content
+			       ,board.hit hit
+			       ,TO_CHAR(board.reg_date, 'YY-MM-DD HH24:MI') regDate
+			       ,board.user_no userNo
+			       ,users.name name
+			FROM   users, board
+			WHERE  users.no = board.user_no
+			AND    board.no = #{postNo}		
+		]]>
+	</select>
+	
+	
+	<select id="selectUser" resultType="int" parameterType="int">
+		<![CDATA[
+			SELECT user_no userNo
+			FROM   board
+			WHERE  no = #{postNo}
+		]]>
+	</select>
+	
+	
+	<update id="hit" parameterType="int">
+		<![CDATA[ 
+			UPDATE board
+			SET    hit = hit+1
+			WHERE  no = #{boardNo}
+		]]>
+	</update>
+	
+	
+	<insert id="insertPost" parameterType="BoardVo">
+		<![CDATA[
+			INSERT INTO board
+			VALUES (seq_board_no.nextval, #{title}, #{content}, 0, SYSDATE, #{userNo})
+		]]>
+	</insert>
+	
+	
+	<update id="updatePost" parameterType="BoardVo">
+		<![CDATA[ 
+			UPDATE board
+			SET    title = #{title}
+			       ,content = #{content}
+			WHERE  no = #{no}
+		]]>
+	</update>
+	
+	
+	<delete id="deletePost" parameterType="int">
+		<![CDATA[
+			DELETE board
+			WHERE  no = #{no}
+		]]>
+	</delete>
+	
+</mapper>
