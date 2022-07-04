@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 수정</title>
 <link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
@@ -19,26 +19,29 @@
 
 			<div id="content">
 				<div id="content-head">
-					<h3>일반게시판</h3>
+					<h3>답글게시판</h3>
+					
 					<div id="location">
 						<ul>
 							<li>홈</li>
 							<li>게시판</li>
-							<li class="last">일반게시판</li>
+							<li class="last">답글게시판</li>
 						</ul>
 					</div>
+					
 					<div class="clear"></div>
 				</div>
 				<!-- //content-head -->
 	
 				<div id="board">
-					<form action="${pageContext.request.contextPath}/board/modifyForm" method="post">
+					<div id="modifyForm">
+						<form action="${pageContext.request.contextPath}/rboard/modify" method="post">
 						<input type="hidden" name="no" value="${post.no}">
-						<div id="read">
+						
 							<!-- 작성자 -->
 							<div class="form-group">
 								<span class="form-text">작성자</span>
-								<span class="form-value">${post.name}</span>
+								<span class="form-value">${authUser.name}</span>
 							</div>
 							
 							<!-- 조회수 -->
@@ -55,26 +58,24 @@
 							
 							<!-- 제목 -->
 							<div class="form-group">
-								<span class="form-text">제 목</span>
-								<span class="form-value">${post.title}</span>
+								<label class="form-text" for="txt-title">제목</label>
+								<input type="text" id="txt-title" name="title" value="${post.title}">
 							</div>
 						
 							<!-- 내용 -->
-							<div id="txt-content">
-								<span class="form-value" >
-									${post.content}
-								</span>
+							<div class="form-group">
+								<textarea id="txt-content" name="content">${post.content}</textarea>
 							</div>
 							
-							<c:if test="${post.userNo == authUser.no}">
-								<button id="btn_modify" type="submit">수정</button>
-							</c:if>
-							<a id="btn_list" href="${pageContext.request.contextPath}/board/list">목록</a>
-						</div>
-					<!-- //read -->
-					</form>		
-					
+							<a id="btn_cancel" href="${pageContext.request.contextPath}/rboard/list">취소</a>
+							<button id="btn_modify" type="submit">수정</button>
+						</form>
+						<!-- //form -->
+						
+					</div>
+					<!-- //modifyForm -->
 				</div>
+				
 				<!-- //board -->
 				
 			</div>

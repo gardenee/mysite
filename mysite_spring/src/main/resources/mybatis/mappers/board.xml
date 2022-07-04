@@ -16,7 +16,7 @@
 			<if test='_parameter != null or !_parameter.equals("")'>
 			       AND title LIKE '%'||#{search}||'%'
 			</if>
-			ORDER BY no DESC
+			ORDER BY board.no DESC
 	</select>
 	
 	

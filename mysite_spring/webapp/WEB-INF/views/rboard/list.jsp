@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>일반게시판</title>
+<title>답글게시판</title>
 <link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
@@ -19,12 +19,12 @@
 
 			<div id="content">
 				<div id="content-head">
-					<h3>일반게시판</h3>
+					<h3>답글게시판</h3>
 					<div id="location">
 						<ul>
 							<li>홈</li>
 							<li>게시판</li>
-							<li class="last">일반게시판</li>
+							<li class="last">답글게시판</li>
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -33,7 +33,7 @@
 	
 				<div id="board">
 					<div id="list">
-						<form action="${pageContext.request.contextPath}/board/list" method="post">
+						<form action="${pageContext.request.contextPath}/rboard/list" method="post">
 							<div class="form-group text-right">
 								<input type="text" name="search" value="">
 								<button type="submit" id="btn_search">검색</button>
@@ -56,12 +56,12 @@
 								<c:forEach items="${bList}" var="post">
 									<tr>
 										<td>${post.no}</td>
-										<td class="text-left"><a href="${pageContext.request.contextPath}/board/read/${post.no}">${post.title}</a></td>
+										<td class="text-left"><a href="${pageContext.request.contextPath}/rboard/read/${post.no}">${post.title}</a></td>
 										<td>${post.name}</td>
 										<td>${post.hit}</td>
 										<td>${post.regDate}</td>
 										<c:if test="${authUser.no == post.userNo}">
-											<td><a href="${pageContext.request.contextPath}/board/delete/${post.no}">[삭제]</a></td>
+											<td><a href="${pageContext.request.contextPath}/rboard/delete/${post.no}">[삭제]</a></td>
 										</c:if>
 									</tr>
 								</c:forEach>
@@ -88,7 +88,7 @@
 						</div>
 						
 						<c:if test="${!(empty authUser)}">
-							<a id="btn_write" href="${pageContext.request.contextPath}/board/writeForm">글쓰기</a>
+							<a id="btn_write" href="${pageContext.request.contextPath}/rboard/writeForm">글쓰기</a>
 						</c:if>
 						
 					</div>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rboard">
+
+	<select id="selectList" parameterType="string" resultType="RboardVo">
+		SELECT b.no no
+		       ,b.title title
+		       ,b.content content
+		       ,b.hit hit
+		       ,TO_CHAR(b.reg_date, 'YY-MM-DD HH24:MI') regDate
+		       ,b.user_no userNo
+		       ,u.name name
+		       ,b.group_no groupNo
+		       ,b.order_no orderNo
+		       ,b.depth depth
+		FROM   rboard b, users u
+		WHERE  u.no = b.user_no
+			<if test='_parameter != null or !_parameter.equals("")'>
+			       AND title LIKE '%'||#{search}||'%'
+			</if>
+		ORDER BY group_no DESC
+		         ,order_no ASC
+	</select>
+	
+	<select id="selectPost" parameterType="string" resultType="RboardVo">
+		<![CDATA[ 
+			SELECT b.no no
+			       ,b.title title
+			       ,b.content content
+			       ,b.hit hit
+			       ,TO_CHAR(b.reg_date, 'YY-MM-DD HH24:MI') regDate
+			       ,b.user_no userNo
+			       ,u.name name
+			       ,b.group_no groupNo
+			       ,b.order_no orderNo
+			       ,b.depth depth
+			FROM   rboard b, users u
+			WHERE  u.no = b.user_no
+			AND    b.no = #{postNo}
+		]]>
+	</select>
+	
+	<select id="selectNo" parameterType="int" resultType="RboardVo">
+		<![CDATA[
+			SELECT no
+			       ,group_no groupNo
+			       ,order_no orderNo
+			       ,depth
+			FROM   rboard
+			WHERE  no = #{postNo}
+		]]>
+	</select>
+	
+	<select id="selectUser" resultType="int" parameterType="int">
+		<![CDATA[
+			SELECT user_no userNo
+			FROM   rboard
+			WHERE  no = #{postNo}
+		]]>
+	</select>
+	
+	<update id="hit" parameterType="int">
+		<![CDATA[ 
+			UPDATE rboard
+			SET    hit = hit+1
+			WHERE  no = #{postNo}
+		]]>
+	</update>
+	
+	<insert id="insertPost" parameterType="BoardVo">
+		<![CDATA[
+			INSERT INTO rboard
+			VALUES (seq_rboard_no.nextval, #{userNo}, #{title}, #{content}, 0, SYSDATE, seq_group_no.nextval, 1, 0)
+		]]>
+	</insert>
+	
+	<insert id="insertReply" parameterType="BoardVo">
+		<![CDATA[
+			INSERT INTO rboard
+			VALUES (seq_rboard_no.nextval, #{userNo}, #{title}, #{content}, 0, SYSDATE, #{groupNo}, #{orderNo}+1, #{depth}+1)
+		]]>
+	</insert>
+	
+	<update id="updateNo" parameterType="BoardVo">
+		<![CDATA[
+			UPDATE rboard
+			SET    order_no = order_no + 1
+			WHERE  group_no = #{groupNo}
+			AND    order_no > #{orderNo}
+		]]>
+	</update>
+	
+	<update id="updatePost" parameterType="BoardVo">
+		<![CDATA[ 
+			UPDATE rboard
+			SET    title = #{title}
+			       ,content = #{content}
+			WHERE  no = #{no}
+		]]>
+	</update>
+	
+	<delete id="deletePost" parameterType="int">
+		<![CDATA[
+			DELETE rboard
+			WHERE  no = #{postNo}
+		]]>
+	</delete>
+	
+</mapper>

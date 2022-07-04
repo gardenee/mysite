@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 읽기</title>
 <link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
@@ -19,12 +19,12 @@
 
 			<div id="content">
 				<div id="content-head">
-					<h3>일반게시판</h3>
+					<h3>답글게시판</h3>
 					<div id="location">
 						<ul>
 							<li>홈</li>
 							<li>게시판</li>
-							<li class="last">일반게시판</li>
+							<li class="last">답글게시판</li>
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -32,7 +32,7 @@
 				<!-- //content-head -->
 	
 				<div id="board">
-					<form action="${pageContext.request.contextPath}/board/modifyForm" method="post">
+					<form action="${pageContext.request.contextPath}/rboard/modifyForm" method="post">
 						<input type="hidden" name="no" value="${post.no}">
 						<div id="read">
 							<!-- 작성자 -->
@@ -69,9 +69,12 @@
 							<c:if test="${post.userNo == authUser.no}">
 								<button id="btn_modify" type="submit">수정</button>
 							</c:if>
-							<a id="btn_list" href="${pageContext.request.contextPath}/board/list">목록</a>
+							<c:if test="${!(empty authUser)}">
+								<a id="btn_reply" href="${pageContext.request.contextPath}/rboard/replyForm/${post.no}">답글달기</a>
+							</c:if>
+							<a id="btn_list" href="${pageContext.request.contextPath}/rboard/list">목록</a>
 						</div>
-					<!-- //read -->
+						<!-- //read -->
 					</form>		
 					
 				</div>

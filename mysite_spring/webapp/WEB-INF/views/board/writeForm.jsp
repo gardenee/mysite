@@ -19,7 +19,7 @@
 			
 			<div id="content">
 				<div id="content-head">
-					<h3>게시판</h3>
+					<h3>일반게시판</h3>
 					<div id="location">
 						<ul>
 							<li>홈</li>

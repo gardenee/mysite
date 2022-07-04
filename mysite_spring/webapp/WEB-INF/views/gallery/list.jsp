@@ -47,13 +47,10 @@
 					<ul id="viewArea">
 					<!-- 이미지반복영역 -->
 					<c:forEach items="#{gList}" var="photo">
-						<li id="img-li">
+						<li class="img-li" data-no="${photo.no}" data-name="${photo.saveName}" data-user="${photo.userNo}" data-content="${photo.content}">
 							<div class="view">
 								<img class="imgItem" src="${pageContext.request.contextPath}/upload/${photo.saveName}">
 								<div class="imgWriter">작성자: <strong>${photo.name}</strong></div>
-								<input type="hidden" name="thisImgNo" value="${photo.no}">
-								<input type="hidden" name="thisImgName" value="${photo.saveName}">
-								<input type="hidden" name="thisImgUser" value="${photo.userNo}">
 							</div>
 						</li>
 					</c:forEach>
@@ -133,30 +130,46 @@
 
 <script type="text/javascript">
 
+var no = 0;
+
+// 이미지 등록 버튼 > 등록 모달
 $("#btnImgUpload").on("click", function(){
 	$("#addModal").modal("show");
 });
 
-$(".view").on("click", function(){
-	var no = $(this).children("[name=thisImgNo]"); 
-	var name = $(this).children("[name=thisImgName]").val();
-	var userNo = $(this).children("[name=thisImgUser]").val();
-	console.log(userNo)
-	$("#imgHere").append('<img class="imgItem" src="${pageContext.request.contextPath}/upload/' + name + '">')
-	
-	var authUserNo = ${authUser.no}; 
 
-	console.log(authUserNo)
-	if ((authUserNo != "" || authUserNo != null) && userNo == authUserNo) {
-		$("#show-modal-footer").append('<button type="button" id="btn-delete" class="btn btn-danger" id="btnDel">삭제</button>');
+// 이미지 등록 모달 > 업로드 버튼 > 사진 첨부 안 됐을 시
+$("#btnUpload").on("click", function(){ ///흠
+	if (!$("#file").val()) {
+		alert("사진을 첨부해 주세요");
+		
+		return false;
+	}
+});
+
+
+// 이미지 클릭
+$(".img-li").on("click", function(){
+	no = $(this).attr("data-no");
+	var name = $(this).attr("data-name");
+	var userNo = $(this).attr("data-user");
+	var content = $(this).attr("data-content");
+	
+	$("#imgHere").append('<img class="imgItem" src="${pageContext.request.contextPath}/upload/' + name + '">') // 사진 불러오기
+	$("#imgHere").append('<p>' + content + '</p>') // 코멘트 불러오기
+	
+	var authUserNo = "${authUser.no}"; 
+	
+	if (authUserNo != "" && userNo == authUserNo) { // 등록자와 로그인 한 사람 같으면 삭제 버튼 표시
+		$("#show-modal-footer").append('<button type="button" id="btn-del" class="btn btn-danger">삭제</button>');
 	}
 	
 	$("#viewModal").modal("show");
-	
 });
 
-$("#show-modal-footer #btn-delete").on("click", function(){
-	var no = $(this).children("[name=thisImgNo]"); 
+
+// 삭제 버튼 클릭 시
+$("#show-modal-footer").on("click", "#btn-del", function(){
 	var info = {no: no};
 	
 	$.ajax({	
@@ -166,8 +179,13 @@ $("#show-modal-footer #btn-delete").on("click", function(){
 		data : JSON.stringify(info),
 		
 		dataType: "json",
-		success : function(visit){
+		success : function(){
+			$("[data-no=" + no + "]").remove();
+			$("#viewModal").modal("hide");
 			
+			alert("성공적으로 삭제되었습니다.");
+						
+			no = 0;
 		},
 		error : function(XHR, status, error) {
 			console.error(status + " : " + error);
@@ -175,11 +193,13 @@ $("#show-modal-footer #btn-delete").on("click", function(){
 	});	
 });
 
+
+// 모달 닫을 때 초기화
 $("#viewModal").on("hidden.bs.modal", function(){
 	$("#imgHere").empty();
-})
+	$("#show-modal-footer #btn-del").remove();
+});
 
 </script>
 
 </html>
-
