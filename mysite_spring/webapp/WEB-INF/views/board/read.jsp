@@ -69,7 +69,7 @@
 							<c:if test="${post.userNo == authUser.no}">
 								<button id="btn_modify" type="submit">수정</button>
 							</c:if>
-							<a id="btn_list" href="${pageContext.request.contextPath}/board/list">목록</a>
+							<a id="btn_list" href="${pageContext.request.contextPath}/board/list/1">목록</a>
 						</div>
 					<!-- //read -->
 					</form>		

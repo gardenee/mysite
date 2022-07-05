@@ -258,5 +258,14 @@
 }
 
 
+#link-del {
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none
+}
 
-
+.modal-footer {
+	border: 0px;
+	text-align: center;
+}

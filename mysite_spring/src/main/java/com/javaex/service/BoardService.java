@@ -1,5 +1,6 @@
 package com.javaex.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.javaex.dao.BoardDao;
 import com.javaex.vo.BoardVo;
+import com.javaex.vo.PagingVo;
 
 @Service
 public class BoardService {
@@ -14,16 +16,21 @@ public class BoardService {
 	@Autowired
 	private BoardDao bDao;
 	
-
-	public List<BoardVo> list(String search){
+	public PagingVo list(String search, int page){
 		if (search.equals("") || search == null) System.out.println("[글 목록을 불러옵니다.]");
 		else System.out.println("['" + search + "'를 검색합니다.]");
 		
-		List<BoardVo> bList = bDao.list(search);
-
-		System.out.println("[" + bList.size() + "건 검색되었습니다.]");
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("search", search);
+		map.put("page", page);
 		
-		return bList;
+		int cnt = bDao.cnt(search);
+		List<BoardVo> bList = bDao.list(map);
+		System.out.println("[" + cnt + "건 검색되었습니다.]");
+		
+		PagingVo pVo = new PagingVo(bList, cnt, page);
+		
+		return pVo;
 	}
 	
 	

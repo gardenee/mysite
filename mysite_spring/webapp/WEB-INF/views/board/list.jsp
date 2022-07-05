@@ -8,6 +8,7 @@
 <title>일반게시판</title>
 <link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
@@ -33,7 +34,7 @@
 	
 				<div id="board">
 					<div id="list">
-						<form action="${pageContext.request.contextPath}/board/list" method="post">
+						<form action="${pageContext.request.contextPath}/board/list/1" method="get">
 							<div class="form-group text-right">
 								<input type="text" name="search" value="">
 								<button type="submit" id="btn_search">검색</button>
@@ -53,7 +54,7 @@
 							</thead>
 							
 							<tbody>
-								<c:forEach items="${bList}" var="post">
+								<c:forEach items="${pVo.bList}" var="post">
 									<tr>
 										<td>${post.no}</td>
 										<td class="text-left"><a href="${pageContext.request.contextPath}/board/read/${post.no}">${post.title}</a></td>
@@ -70,18 +71,22 @@
 			
 						<div id="paging">
 							<ul>
-								<li><a href="">◀</a></li>
-								<li class="active"><a href="">1</a></li>
-								<li><a href="">2</a></li>
-								<li><a href="">3</a></li>
-								<li><a href="">4</a></li>
-								<li><a href="">5</a></li>
-								<li><a href="">6</a></li>
-								<li><a href="">7</a></li>
-								<li><a href="">8</a></li>
-								<li><a href="">9</a></li>
-								<li><a href="">10</a></li>
-								<li><a href="">▶</a></li>
+								<c:if test="${pVo.prev}">
+									<li><a href="${pageContext.request.contextPath}/board/list/${pVo.startBtn-1}?search=${search}">◀</a></li>
+								</c:if>
+								
+								<c:forEach begin="${pVo.startBtn}" end="${pVo.endBtn}" step="1" var="page">
+									<c:if test="${page == pVo.currPage}">
+										<li class="active"><a href="${pageContext.request.contextPath}/board/list/${page}?search=${search}">${page}</a></li>
+									</c:if>
+									<c:if test="${page != pVo.currPage}">
+										<li><a href="${pageContext.request.contextPath}/board/list/${page}?search=${search}">${page}</a></li>
+									</c:if>
+								</c:forEach>
+								
+								<c:if test="${pVo.next}">
+									<li><a href="${pageContext.request.contextPath}/board/list/${pVo.endBtn+1}?search=${search}">▶</a></li>
+								</c:if>
 							</ul>
 														
 							<div class="clear"></div>

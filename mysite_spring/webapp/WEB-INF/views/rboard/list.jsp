@@ -6,8 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>답글게시판</title>
+
+<link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/button.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/board.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 </head>
 
 <body>
@@ -61,7 +67,7 @@
 										<td>${post.hit}</td>
 										<td>${post.regDate}</td>
 										<c:if test="${authUser.no == post.userNo}">
-											<td><a href="${pageContext.request.contextPath}/rboard/delete/${post.no}">[삭제]</a></td>
+											<td><a id="link-del" data-no="${post.no}">[삭제]</a></td>
 										</c:if>
 									</tr>
 								</c:forEach>
@@ -108,6 +114,45 @@
 	</div>
 	<!-- //wrap -->
 	
+	
+	<!-- 삭제 모달창  -->
+	<div id="del-modal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">삭제하시겠습니까?</h4>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+					<button id="modal-btn-del" type="button" class="btn btn-danger">삭제</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	
 </body>
+
+<script type="text/javascript">
+var no = 0;
+
+$("#link-del").on("click", function(){
+	$("#del-modal").modal("show");
+	no = parseInt($("#link-del").attr("data-no"));
+});
+
+$("#modal-btn-del").on("click", function(){
+	location.href = "${pageContext.request.contextPath}/rboard/delete/" + no;
+});
+
+</script>
 
 </html>

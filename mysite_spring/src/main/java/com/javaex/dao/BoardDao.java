@@ -1,5 +1,6 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,12 +17,18 @@ public class BoardDao {
 	
 	
 	// 리스트, 검색
-	public List<BoardVo> list(String search) {
-		List<BoardVo> bList = sqlSession.selectList("board.list", search);
+	public List<BoardVo> list(HashMap<String, Object> map) {
+		List<BoardVo> bList = sqlSession.selectList("board.list", map);
 
 		return bList;
 	}
 	
+	// 글 개수 불러오기
+	public int cnt(String search) {
+		int cnt = sqlSession.selectOne("board.cnt", search);
+		
+		return cnt;
+	}
 	
 	// 글 읽기, 수정하기 > 불러오기
 	public BoardVo selectPost(int postNo) {

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.BoardService;
 import com.javaex.vo.BoardVo;
+import com.javaex.vo.PagingVo;
 import com.javaex.vo.UserVo;
 
 @Controller
@@ -26,12 +27,13 @@ public class BoardController {
 	
 	
 	// 목록
-	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
-	public String list(@RequestParam(value="search", defaultValue="") String search, Model model) {
+	@RequestMapping(value="/list/{page}", method={RequestMethod.GET, RequestMethod.POST})
+	public String list(@PathVariable("page") int page, @RequestParam(value="search", defaultValue="") String search, Model model) {
 		System.out.println("board > list");
 
-		List<BoardVo> bList = bService.list(search);
-		model.addAttribute("bList", bList);
+		PagingVo pVo = bService.list(search, page);
+		model.addAttribute("pVo", pVo);
+		model.addAttribute("search", search);
 		
 		return "/board/list";
 	}

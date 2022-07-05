@@ -3,20 +3,36 @@
 
 <mapper namespace="board">
 
-	<select id="list" resultType="BoardVo" parameterType="String">
-			SELECT board.no no
-			       ,board.title title
-			       ,board.content content
-			       ,board.hit hit
-			       ,TO_CHAR(board.reg_date, 'YY-MM-DD HH24:MI') regDate
-			       ,board.user_no userNo
+	<select id="list" resultType="BoardVo" parameterType="Map">		
+		<![CDATA[
+			SELECT rot.rn rn
+			       ,rot.no no
+			       ,rot.title title
+			       ,rot.content content
+			       ,rot.hit hit
+			       ,TO_CHAR(rot.reg_date, 'YY-MM-DD HH24:MI') regDate
+			       ,rot.user_no userNo
 			       ,users.name name
-			FROM   users, board
-			WHERE  users.no = board.user_no
-			<if test='_parameter != null or !_parameter.equals("")'>
-			       AND title LIKE '%'||#{search}||'%'
-			</if>
-			ORDER BY board.no DESC
+			FROM   users,  (SELECT ROWNUM rn, no, title, content, hit, reg_date, user_no
+			                FROM   (SELECT ROWNUM, no, title, content, hit, reg_date, user_no
+			                        FROM   board
+			                        WHERE  ROWNUM > 0 ]]>
+			                        <if test='_parameter != null or !_parameter.equals("")'>
+			                        AND    title LIKE '%'||#{search}||'%'
+			                        </if>
+		<![CDATA[	                ORDER BY board.no DESC) ot 
+							) rot
+			WHERE  users.no = rot.user_no
+			AND    rn > (#{page} - 1) * 10
+			AND    rn <= #{page} * 10
+		]]>
+	</select>
+	
+	
+	<select id="cnt" resultType="int" parameterType="string">
+		SELECT COUNT(*)
+		FROM   board
+		WHERE  title LIKE '%'||#{search}||'%'
 	</select>
 	
 	
